@@ -6,6 +6,53 @@ import ListItem from "./shared/ListItem";
 import Button from "./shared/Button";
 import React, { Component } from "react";
 
+// version 2 (from the React State/Props Exercise)
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list: ["ready", "set", "GO"],
+      text: "",
+    };
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    this.setState((prevState) => ({
+      list: [...prevState.list, prevState.text],
+      text: "",
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello World!</h1>
+        <form onSubmit={this.onSubmit}>
+          <input
+            type="text"
+            name="text"
+            value={this.state.text}
+            onChange={(event) => {
+              this.setState({ text: event.target.value });
+            }}
+          ></input>
+          <Button type="submit">Add</Button>
+        </form>
+        <ul>
+          {this.state.list.map((item, idx) => {
+            return <li key={item + idx}>{item}</li>;
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+/* 
+//version 1 (from the React Intro + State/Props Lecture)
 class App extends Component {
   constructor(props) {
     super(props);
@@ -84,5 +131,6 @@ class App extends Component {
     );
   }
 }
+  */
 
 export default App;
