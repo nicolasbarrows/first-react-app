@@ -4,55 +4,9 @@ import "./App.css";
 import ListGroup from "./shared/ListGroup";
 import ListItem from "./shared/ListItem";
 import Button from "./shared/Button";
+import JokesList from "./components/JokesList";
 import React, { Component } from "react";
 
-// version 2 (from the React State/Props Exercise)
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list: ["ready", "set", "GO"],
-      text: "",
-    };
-
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onSubmit(event) {
-    event.preventDefault();
-    this.setState((prevState) => ({
-      list: [...prevState.list, prevState.text],
-      text: "",
-    }));
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Hello World!</h1>
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            name="text"
-            value={this.state.text}
-            onChange={(event) => {
-              this.setState({ text: event.target.value });
-            }}
-          ></input>
-          <Button type="submit">Add</Button>
-        </form>
-        <ul>
-          {this.state.list.map((item, idx) => {
-            return <li key={item + idx}>{item}</li>;
-          })}
-        </ul>
-      </div>
-    );
-  }
-}
-/* 
-//version 1 (from the React Intro + State/Props Lecture)
 class App extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +18,11 @@ class App extends Component {
         "AMERICAN MOTOR SPORTS (420CC EDITION)",
       ],
       album: "",
+      list: ["ready", "set", "GO"],
+      text: "",
     };
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   handleInput = (event) => {
@@ -86,6 +44,14 @@ class App extends Component {
     );
     this.setState({ albums: updatedAlbums });
   };
+
+  onSubmit(event) {
+    event.preventDefault();
+    this.setState((prevState) => ({
+      list: [...prevState.list, prevState.text],
+      text: "",
+    }));
+  }
 
   render() {
     return (
@@ -117,7 +83,7 @@ class App extends Component {
               <label htmlFor="task">Add New Album</label>
               <input
                 type="text"
-                name="task"
+                name="username"
                 id="task"
                 value={this.state.task}
                 onChange={this.handleInput}
@@ -125,12 +91,35 @@ class App extends Component {
               <Button type="submit">Test</Button>
             </form>
           </div>
+
+          <div>
+            <h1>Hello World!</h1>
+            <form onSubmit={this.onSubmit}>
+              <input
+                type="text"
+                name="text"
+                value={this.state.text}
+                onChange={(event) => {
+                  this.setState({ text: event.target.value });
+                }}
+              ></input>
+              <Button type="submit">Add</Button>
+            </form>
+            <ul>
+              {this.state.list.map((item, idx) => {
+                return <li key={item + idx}>{item}</li>;
+              })}
+            </ul>
+          </div>
+
+          <div>
+            <JokesList></JokesList>
+          </div>
           <img src={logo} alt="React logo" width="100" height="100" />
         </header>
       </div>
     );
   }
 }
-  */
 
 export default App;
