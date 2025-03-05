@@ -3,54 +3,96 @@
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+  font-size: calc(10px + 2vmin);
 }
 h1 {
-  color: #1DB954;
-  padding: .1vw;
+  color: #1db954;
+  font-size: 2rem;
+  padding-top: 5vh;
 }
-.App {
-  text-align: center;
+nav {
+  width: 100vw;
+  position: fixed;
+  background-color: #1db954;
+  z-index: 1;
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  list-style: none;
+  overflow: hidden;
 }
 
-.App-header {
+nav a {
+  color: white;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0.25rem;
+}
+
+.active {
   background-color: #0d0d0d;
+  color: #1db954;
+}
+
+.App {
+  width: 100vw;
   min-height: 100vh;
+  height: auto;
+  background-color: #0d0d0d;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-start;
+}
+
+.App p {
   color: white;
 }
-
-.App-link {
-  color: #b975b9;
+form {
+  background-color: #8f8f8f;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
 }
-
 .list-group {
-display:flex;
-flex-direction: column;
-list-style: none;
-padding: 1rem;
-width:60vw;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 1rem;
 }
 
 .list-group-item {
-  text-align: left;
   display: flex;
-  flex-direction: row;
+  flex-direction:row;
+  align-items:center;
   justify-content: space-between;
-  background-color:#fff;
+  width: 60vw;
+  text-align: left;
+  background-color: #fff;
   color: #0d0d0d;
-  padding: .75rem;
+  padding: 0.75rem;
   border: 1px solid #0d0d0d;
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.wide-item {
+  width: 80vw;
 }
 
 .square {
-  color: #1DB954;
+  color: #1db954;
   min-width: 30px;
   min-height: 30px;
-  padding: .25rem;
-  align-self:center;
+  padding: 0.25rem;
+  overflow: hidden;
 }
